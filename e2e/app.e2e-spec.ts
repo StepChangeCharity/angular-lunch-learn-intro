@@ -7,8 +7,8 @@ describe('angular-lunch-learn-intro App', () => {
     page = new AngularLunchLearnIntroPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying Angular Lunch and Learn', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Angular Lunch and Learn');
   });
 });
