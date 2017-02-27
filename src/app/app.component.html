@@ -1,3 +1,18 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container class="full-page">
+  <md-sidenav #sidenav mode="over" class="side-nav">
+    <md-list>
+      <md-list-item> Home </md-list-item>
+      <md-list-item> About </md-list-item>
+      <md-list-item> Contact </md-list-item>
+    </md-list>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.toggle()" class="title__button title__button--menu">
+      <md-icon>menu</md-icon>
+    </button>
+    <span class="title">{{title}}</span>
+  </md-toolbar>
+  <div class="app-content" fxLayout fxLayoutAlign="space-around start" fxLayoutGap="10px" fxLayoutWrap="wrap">
+   <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" fxFlex="300px" fxFlexFill></app-dog-card>  
+  </div>
+</md-sidenav-container>

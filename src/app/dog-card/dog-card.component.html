@@ -1,0 +1,17 @@
+<md-card>
+  <md-card-header>
+    <div md-card-avatar></div>
+    <md-card-title>{{dog.breed}}</md-card-title>
+    <md-card-subtitle>Dog Breed</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image [src]="dog.src">
+  <md-card-content>
+    <p class="dog-description">
+      {{dog.description}}
+    </p>
+  </md-card-content>
+  <md-card-actions>
+    <button color="primary" md-raised-button>LIKE</button>
+    <button color="accent" md-raised-button>SHARE</button>
+  </md-card-actions>
+</md-card>
