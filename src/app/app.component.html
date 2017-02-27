@@ -13,13 +13,17 @@
     <span class="title">{{title}}</span>
   </md-toolbar>
   <div class="app-content" fxLayout fxLayoutAlign="space-around start" fxLayoutGap="10px" fxLayoutWrap="wrap">
-   <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" fxFlex="300px" fxFlexFill></app-dog-card>  
-    
-    <button (click)="increment()">Increment</button>
-<div>Current Count: {{ counter | async }}</div>
-<button (click)="decrement()">Decrement</button>
-
-<button (click)="reset()">Reset Counter</button>
-    
+    <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" fxFlex="300px" fxFlexFill></app-dog-card>
+    <md-card>
+      <md-card-title>Store Fun!</md-card-title>
+      <md-card-content>
+        <h1>Current Count: {{ counter | async }}</h1>
+      </md-card-content>
+      <md-card-actions>
+        <button md-raised-button color="primary" (click)="increment()">Increment</button>
+        <button md-raised-button color="primary" (click)="decrement()">Decrement</button>
+        <button md-raised-button color="accent" (click)="reset()">Reset</button>
+      </md-card-actions>
+    </md-card>
   </div>
 </md-sidenav-container>
