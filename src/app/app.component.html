@@ -13,8 +13,8 @@
     <span class="title">{{title}}</span>
   </md-toolbar>
   <div class="app-content" fxLayout fxLayoutAlign="space-around start" fxLayoutGap="10px" fxLayoutWrap="wrap">
-    <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" fxFlex="300px" fxFlexFill></app-dog-card>
-    <md-card>
+    <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" fxFlex="400px" fxFlexFill></app-dog-card>
+    <md-card fxFlex="400px" fxFlexFill>
       <md-card-title>Store Fun!</md-card-title>
       <md-card-content>
         <h1>Current Count: {{ counter | async }}</h1>
