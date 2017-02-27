@@ -14,5 +14,12 @@
   </md-toolbar>
   <div class="app-content" fxLayout fxLayoutAlign="space-around start" fxLayoutGap="10px" fxLayoutWrap="wrap">
    <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" fxFlex="300px" fxFlexFill></app-dog-card>  
+    
+    <button (click)="increment()">Increment</button>
+<div>Current Count: {{ counter | async }}</div>
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
+    
   </div>
 </md-sidenav-container>
