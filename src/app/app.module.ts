@@ -14,6 +14,17 @@ import { AppComponent } from './app.component';
 import { counterReducer } from './counter';
 import { DogCardComponent } from './dog-card/dog-card.component';
 
+export const composeStore = compose(
+  storeLogger(),
+  combineReducers
+)({
+  counter: counterReducer
+});
+
+export function reducer(state: any, action: any) {
+  return composeStore(state, action);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +34,7 @@ import { DogCardComponent } from './dog-card/dog-card.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore(
-      compose(storeLogger(), combineReducers)
-      ({ counter: counterReducer })
-    ),
+    StoreModule.provideStore(reducer),
     // Note that you must instrument after importing StoreModule
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 5
