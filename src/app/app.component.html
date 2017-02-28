@@ -11,10 +11,8 @@
       <md-icon>menu</md-icon>
     </button>
     <span class="title">{{title}}</span>
-    <md-toolbar-row  *ngIf="topDog">
-      <app-top-dog [topDog]="topDog.breed" [runt]="runt.breed"></app-top-dog>
-    </md-toolbar-row>
   </md-toolbar>
+  <app-top-dog [topDog]="topDog.breed" [runt]="runt.breed" *ngIf="topDog"></app-top-dog>
   <div class="app-content" fxLayout fxLayoutAlign="space-around start" fxLayoutGap="10px" fxLayoutWrap="wrap">
     <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" (likeDogEvent)="likeDog($event)" (unlikeDogEvent)="unlikeDog($event)"
       fxFlex="400px" fxFlexFill></app-dog-card>
