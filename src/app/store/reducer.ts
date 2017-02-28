@@ -59,30 +59,46 @@ const initialState: State = {
 export function dogReducer(state: State = initialState, action: Action): State {
     switch (action.type) {
         case LIKE:
+            let likedIndex = state.dogs.findIndex(dog => dog.id === action.payload);
+            let likedDog = state.dogs[likedIndex];
+            likedDog.likes++;
 
-            state.dogs.forEach((dog, index) => {
-                if (dog.id === action.payload) {
-                    state.dogs[index].likes++;
-                }
-            });
+            if (likedIndex >= 0) {
+                let updatedItems = [
+                    ...state.dogs.slice(0, likedIndex),
+                    likedDog,
+                    ...state.dogs.slice(likedIndex + 1)
+                ];
 
-            state.topDog = getTopDog(state.dogs)
-            state.runt = getRunt(state.dogs);
-
-            return Object.assign({}, state);
+                return Object.assign({}, state, { 
+                    dogs: updatedItems, 
+                    topDog: getTopDog(updatedItems), 
+                    runt: getRunt(updatedItems)
+                });
+            } else {
+                return Object.assign({}, state);
+            }
 
         case UNLIKE:
+            let unlikedIndex = state.dogs.findIndex(dog => dog.id === action.payload);
+            let unlikedDog = state.dogs[unlikedIndex];
+            unlikedDog.likes--;
 
-            state.dogs.forEach((dog, index) => {
-                if (dog.id === action.payload) {
-                    state.dogs[index].likes--;
-                }
-            });
+            if (unlikedIndex >= 0) {
+                let updatedItems = [
+                    ...state.dogs.slice(0, unlikedIndex),
+                    unlikedDog,
+                    ...state.dogs.slice(unlikedIndex + 1)
+                ];
 
-            state.topDog = getTopDog(state.dogs)
-            state.runt = getRunt(state.dogs);
-
-            return Object.assign({}, state);
+                return Object.assign({}, state, { 
+                    dogs: updatedItems, 
+                    topDog: getTopDog(updatedItems), 
+                    runt: getRunt(updatedItems)
+                });
+            } else {
+                return Object.assign({}, state);
+            }
 
         default:
             return Object.assign({}, state);
