@@ -11,19 +11,12 @@
       <md-icon>menu</md-icon>
     </button>
     <span class="title">{{title}}</span>
+    <md-toolbar-row  *ngIf="topDog">
+      <app-top-dog [topDog]="topDog.breed" [runt]="runt.breed"></app-top-dog>
+    </md-toolbar-row>
   </md-toolbar>
   <div class="app-content" fxLayout fxLayoutAlign="space-around start" fxLayoutGap="10px" fxLayoutWrap="wrap">
-    <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" fxFlex="400px" fxFlexFill></app-dog-card>
-    <md-card fxFlex="400px" fxFlexFill>
-      <md-card-title>Store Fun!</md-card-title>
-      <md-card-content>
-        <h1>Current Count: {{ counter | async }}</h1>
-      </md-card-content>
-      <md-card-actions>
-        <button md-raised-button color="primary" (click)="increment()">Increment</button>
-        <button md-raised-button color="primary" (click)="decrement()">Decrement</button>
-        <button md-raised-button color="accent" (click)="reset()">Reset</button>
-      </md-card-actions>
-    </md-card>
+    <app-dog-card class="dog-card" *ngFor="let dog of dogs" [dog]="dog" (likeDogEvent)="likeDog($event)" (unlikeDogEvent)="unlikeDog($event)"
+      fxFlex="400px" fxFlexFill></app-dog-card>
   </div>
 </md-sidenav-container>

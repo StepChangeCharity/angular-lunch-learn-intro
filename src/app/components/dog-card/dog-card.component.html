@@ -9,9 +9,13 @@
     <p class="dog-description">
       {{dog.description}}
     </p>
+    <div>
+      <md-icon>thumb_up</md-icon>
+      {{dog.likes}}
+    </div>
   </md-card-content>
   <md-card-actions>
-    <button color="primary" md-raised-button>LIKE</button>
-    <button color="accent" md-raised-button>SHARE</button>
+    <button color="primary" md-raised-button (click)="likeDog(dog.id)">LIKE</button>
+    <button color="accent" md-raised-button (click)="unlikeDog(dog.id)" [disabled]="dog.likes === 0">UNLLIKE</button>
   </md-card-actions>
 </md-card>

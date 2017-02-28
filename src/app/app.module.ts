@@ -11,14 +11,19 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { compose } from "@ngrx/core/compose";
 
 import { AppComponent } from './app.component';
-import { counterReducer } from './counter';
-import { DogCardComponent } from './dog-card/dog-card.component';
+import * as fromDog from './store/reducer';
+import { DogCardComponent } from './components/dog-card/dog-card.component';
+import { TopDogComponent } from './components/top-dog/top-dog.component';
+
+export interface AppState {
+  dogState: fromDog.State
+};
 
 export const composeStore = compose(
   storeLogger(),
   combineReducers
 )({
-  counter: counterReducer
+  dogState: fromDog.dogReducer
 });
 
 export function reducer(state: any, action: any) {
@@ -28,7 +33,8 @@ export function reducer(state: any, action: any) {
 @NgModule({
   declarations: [
     AppComponent,
-    DogCardComponent
+    DogCardComponent,
+    TopDogComponent
   ],
   imports: [
     BrowserModule,
